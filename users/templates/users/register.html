@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    {% load crispy_forms_tags %} <!-- Updated here to load crispy forms --> 
+    <div class=""content-section>
+        <form method="POST">
+            {% csrf_token %} <!-- Django needs this for the form--> 
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Here</legend>
+                <!-- {{ form.as_p }} <p> </p> -->
+                {{ form|crispy }} <!-- Updated to load the form and let crispy take care of the formmating -->
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already have an account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}
